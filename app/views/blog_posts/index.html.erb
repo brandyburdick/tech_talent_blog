@@ -2,30 +2,38 @@
 
 <h1>Listing Blog Posts</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Author</th>
-      <th>Blog entry</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<div class="row"> 
+  <% @blog_posts.each do |blog_post| %>
+    <div class="col-md-6">
+      <div class="panel panel-default">
+        <%= link_to blog_post do %>
+          <div class="panel-heading">
+            <h3 class="panel-title">
+              <%= blog_post.title %>
 
-  <tbody>
-    <% @blog_posts.each do |blog_post| %>
-      <tr>
-        <td><%= blog_post.title %></td>
-        <td><%= blog_post.author %></td>
-        <td><%= blog_post.blog_entry %></td>
-        <td><%= link_to 'Show', blog_post %></td>
-        <td><%= link_to 'Edit', edit_blog_post_path(blog_post) %></td>
-        <td><%= link_to 'Destroy', blog_post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+            </h3>
+          </div>
+        <% end %>
+        <div class="panel-body">
+          <p>by <%= blog_post.author %></p>
+          <p>
+            <%= blog_post.blog_entry[0..275] %>...
+            <%= link_to "[more]", blog_post %>
+          </p>
+        </div>
+        
+        <div class="panel-footer">
+          <%= link_to 'Edit', edit_blog_post_path(blog_post), class: 'btn btn-warning' %>
+          <%= link_to 'Destroy', blog_post, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+
+
 
 <br>
 
-<%= link_to 'New Blog post', new_blog_post_path %>
+<%= link_to 'New Blog post', new_blog_post_path, class: 'btn btn-primary' %>
