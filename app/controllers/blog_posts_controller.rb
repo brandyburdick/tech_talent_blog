@@ -1,5 +1,6 @@
 class BlogPostsController < ApplicationController
   before_action :set_blog_post, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:edit, :update, :destroy, :create]
 
   # GET /blog_posts
   # GET /blog_posts.json
@@ -27,6 +28,7 @@ class BlogPostsController < ApplicationController
   def create
     @blog_post = BlogPost.new(blog_post_params)
     @blog_post.user_id = current_user.id
+  # @blog_post.author = current_user.username
     
     respond_to do |format|
       if @blog_post.save

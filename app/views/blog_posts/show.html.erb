@@ -9,19 +9,12 @@
 		<p><%= @blog_post.blog_entry %></p>
 	</div>	
 	<div class="panel-footer"> 
-		<%= link_to 'Edit', edit_blog_post_path(@blog_post), class: "btn btn-warning btn-sm" %>
+		<% if current_user == @blog_post.user %>
+			<%= link_to 'Edit', edit_blog_post_path(@blog_post), class: "btn btn-warning btn-sm" %>
+		<% end %>
 	</div>
 </div>
-		
-<div class="panel panel-success">
-	<div class="panel-heading">
-		Leave a Comment
-	</div>
-	<div class="panel-body">
-		<%= render 'comments/form' %>
-	</div>
-</div>
-
+	
 <p>
 	<ul>
 		<% @blog_post.comments.each do |comment| %>
@@ -32,6 +25,17 @@
 		<% end %>
 	</ul>
 </p>
+		
+<div class="panel panel-success">
+	<div class="panel-heading">
+		Leave a Comment
+	</div>
+	<div class="panel-body">
+		<%= render 'comments/form' %>
+	</div>
+</div>
+
+
 
 
 
