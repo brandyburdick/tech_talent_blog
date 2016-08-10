@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'devise'
 gem 'stamp'
 gem 'awesome_print'
 gem 'bootstrap-sass'

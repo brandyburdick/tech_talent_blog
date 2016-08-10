@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  
+  root 'blog_posts#index'
+
   resources :comments
   resources :comments
   resources :blog_posts
