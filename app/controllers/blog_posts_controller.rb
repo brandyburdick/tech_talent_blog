@@ -2,6 +2,12 @@ class BlogPostsController < ApplicationController
   before_action :set_blog_post, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:edit, :update, :destroy, :create]
 
+
+  def your_posts
+
+  end
+
+
   # GET /blog_posts
   # GET /blog_posts.json
   def index

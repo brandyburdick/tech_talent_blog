@@ -17,17 +17,20 @@
 @import 'bootstrap-sprockets';
 @import 'bootstrap';
 
+
+
 /* For hiding the comment-blog association */
 .cant-see-me {
 	display: none;
 }
 
-.container {
-	background-color: rgba(160, 94, 162,0.9);
+.container-body {
+	background-color: gray;
 }
 
 body {
 	background-color: lightgray;
+	padding-top: 70px;
 }
 
 .panel-heading > a {
