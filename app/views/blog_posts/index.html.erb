@@ -16,7 +16,7 @@
         
         
         <div class="panel-body">
-          <p>by <%= blog_post.user.username %></p>
+          <p>by <strong><%= link_to blog_post.user.username, user_profile_path(id: blog_post.user.id) %></strong></p>
           <p>
             <%= blog_post.blog_entry[0..275] %>...
             <%= link_to "[more]", blog_post %>
@@ -33,6 +33,6 @@
 
 <br>
 
-<%= link_to 'New Blog post', new_blog_post_path, class: 'btn btn-primary' %>
+
 
 

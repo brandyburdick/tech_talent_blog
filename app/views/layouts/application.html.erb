@@ -10,6 +10,7 @@
 <body>
 
 
+
 <!--NAVBAR-->
 <nav class="navbar navbar-inverse navbar-fixed-top">
   <div class="container">
@@ -21,6 +22,10 @@
         <span class="icon-bar"></span>
       </button>
       <%= link_to "TechTalentBlog", root_path, class: "navbar-brand" %>
+      <ul class="nav navbar-nav">
+        <li class="icon-bar"><%= link_to 'New Blog Post', new_blog_post_path %></li>
+        <li class="icon-bar"><<%= link_to 'My Posts', my_posts_path %></li>
+      </ul>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <div class="navbar-form navbar-right">
@@ -29,6 +34,7 @@
           <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "btn btn-danger" %>
           <% else %>
             <%= link_to "Sign in", new_user_session_path, class: 'btn btn-success' %>
+            <%= link_to "Forgot your password?", new_user_password_path, class: "btn btn-warning" %>
         <% end %>
       </div>
     </div><!--/.navbar-collapse -->

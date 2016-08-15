@@ -37,3 +37,23 @@ body {
 	color: white;
 
 }
+
+/* Extending the Bootstrap classes to cover all possible Flash thypes */
+
+.alert-alert {
+	@extend .alert-danger;
+}
+
+.alert-notice {
+	@extend .alert-warning;
+}
+
+
+.show-view-wrapper {
+	margin-top: 20px;
+}
+
+
+
+
+

@@ -1,9 +1,14 @@
 class BlogPostsController < ApplicationController
   before_action :set_blog_post, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, only: [:edit, :update, :destroy, :create]
+  before_action :authenticate_user!, only: [:edit, :update, :destroy, :create, :my_posts]
 
+  # GET /user_profile
+  def user_profile
+    @user = User.find(params[:id])
+  end
 
-  def your_posts
+  # GET /my_posts
+  def my_posts
 
   end
 
@@ -27,6 +32,7 @@ class BlogPostsController < ApplicationController
 
   # GET /blog_posts/1/edit
   def edit
+    session[:return_to] = request.referer
   end
 
   # POST /blog_posts
@@ -38,7 +44,7 @@ class BlogPostsController < ApplicationController
     
     respond_to do |format|
       if @blog_post.save
-        format.html { redirect_to @blog_post, notice: 'Blog post was successfully created.' }
+        format.html { redirect_to blog_posts_path, notice: 'Blog post was successfully created.' }
         format.json { render :show, status: :created, location: @blog_post }
       else
         format.html { render :new }
@@ -52,7 +58,7 @@ class BlogPostsController < ApplicationController
   def update
     respond_to do |format|
       if @blog_post.update(blog_post_params)
-        format.html { redirect_to @blog_post, notice: 'Blog post was successfully updated.' }
+        format.html { redirect_to session[:return_to], notice: 'Blog post was successfully updated.' }
         format.json { render :show, status: :ok, location: @blog_post }
       else
         format.html { render :edit }
